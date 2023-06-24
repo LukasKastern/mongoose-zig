@@ -5,7 +5,7 @@ pub fn build(b: *std.Build.Builder) void {
     var target = b.standardTargetOptions(.{});
 
     var mongoose_lib = b.addStaticLibrary(.{
-        .name = "mongoose",
+        .name = "mongoose_lib",
         .target = target,
         .optimize = optimize,
     });
