@@ -48,12 +48,7 @@ pub fn build(b: *std.Build.Builder) void {
             "src/fs_posix.c",
         },
         &[_][]const u8{
-            "-DMG_MAX_HTTP_HEADERS=7",
             "-DMG_ENABLE_LINES",
-            "-DMG_ENABLE_PACKED_FS=1",
-            "-DMG_ENABLE_SSI=1",
-            "-DMG_ENABLE_ASSERT=1",
-            "-DMG_ENABLE_IPV6=1",
         },
     );
 
