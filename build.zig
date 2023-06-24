@@ -42,6 +42,9 @@ pub fn build(b: *std.Build.Builder) void {
             "src/md5.c",
             "src/net.c",
             "src/ssi.c",
+            "src/tls_dummy.c",
+            "src/tls_openssl.c",
+            "src/tls_mbed.c",
         },
         &[_][]const u8{
             "-DMG_MAX_HTTP_HEADERS=7",
