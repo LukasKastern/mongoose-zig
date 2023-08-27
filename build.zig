@@ -10,8 +10,8 @@ pub fn build(b: *std.Build.Builder) void {
         .optimize = optimize,
     });
 
-    mongoose_lib.addIncludePath("");
-    mongoose_lib.addIncludePath("src");
+    mongoose_lib.addIncludePath(.{ .path = "" });
+    mongoose_lib.addIncludePath(.{ .path = "src" });
     mongoose_lib.linkLibC();
 
     mongoose_lib.addCSourceFiles(
