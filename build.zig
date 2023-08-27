@@ -60,8 +60,8 @@ pub fn build(b: *std.Build.Builder) void {
         .source_file = .{ .path = "mongoose.h" },
     });
 
-    // var module = b.addModule("mongoose", .{ .source_file = .{ .generated = &translate_header.output_file } });
-    // b.addInstallHeaderFile("mongoose.h", "mongoose.h");
+    _ = b.addModule("mongoose", .{ .source_file = .{ .generated = &translate_header.output_file } });
+    _ = b.addInstallHeaderFile("mongoose.h", "mongoose.h");
 
     mongoose_lib.step.dependOn(&translate_header.step);
     b.installArtifact(mongoose_lib);
