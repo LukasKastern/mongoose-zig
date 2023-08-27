@@ -47,10 +47,12 @@ pub fn build(b: *std.Build.Builder) void {
             "src/tls_mbed.c",
             "src/fs_posix.c",
         },
-        &[_][]const u8{
-            "-DMG_ENABLE_LINES",
-        },
+        &[_][]const u8{ "-DMG_ENABLE_LINES", "-DMG_ENABLE_MBEDTLS=1" },
     );
+
+    var mbedtls_dep = b.dependency("mbedtls", .{});
+    var mbedtls_lib = mbedtls_dep.artifact("mbedtls");
+    mongoose_lib.linkLibrary(mbedtls_lib);
 
     var translate_header = b.addTranslateC(.{
         .optimize = optimize,
@@ -58,7 +60,8 @@ pub fn build(b: *std.Build.Builder) void {
         .source_file = .{ .path = "mongoose.h" },
     });
 
-    _ = b.addModule("mongoose", .{ .source_file = .{ .generated = &translate_header.output_file } });
+    // var module = b.addModule("mongoose", .{ .source_file = .{ .generated = &translate_header.output_file } });
+    // b.addInstallHeaderFile("mongoose.h", "mongoose.h");
 
     mongoose_lib.step.dependOn(&translate_header.step);
     b.installArtifact(mongoose_lib);
