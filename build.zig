@@ -47,7 +47,7 @@ pub fn build(b: *std.Build.Builder) void {
             "src/tls_mbed.c",
             "src/fs_posix.c",
         },
-        &[_][]const u8{ "-DMG_ENABLE_LINES", "-DMG_TLS=MG_TLS_OPENSSL" },
+        &[_][]const u8{ "-DMG_ENABLE_LINES", "-DMG_TLS=MG_TLS_MBEDTLS" },
     );
 
     var mbedtls_dep = b.dependency("mbedtls", .{});
