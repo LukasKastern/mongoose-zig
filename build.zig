@@ -50,15 +50,15 @@ pub fn build(b: *std.Build.Builder) void {
         &[_][]const u8{ "-DMG_ENABLE_LINES", "-DMG_TLS=MG_TLS_OPENSSL" },
     );
 
-    // var mbedtls_dep = b.dependency("mbedtls", .{});
-    // var mbedtls_lib = mbedtls_dep.artifact("mbedtls");
+    var mbedtls_dep = b.dependency("mbedtls", .{});
+    var mbedtls_lib = mbedtls_dep.artifact("mbedtls");
 
-    mongoose_lib.addObjectFile(.{ .path = "ssl/boringssl.lib" });
-    mongoose_lib.addObjectFile(.{ .path = "ssl/boringssl_asm.lib" });
+    // mongoose_lib.addObjectFile(.{ .path = "ssl/boringssl.lib" });
+    // mongoose_lib.addObjectFile(.{ .path = "ssl/boringssl_asm.lib" });
 
     // mongoose_lib.linkSystemLibrary2("./ssl/boringssl.lib", .{});
     // mongoose_lib.linkSystemLibrary2("./ssl/boringssl_asm.lib", .{});
-
+    mongoose_lib.linkLibrary(mbedtls_lib);
     mongoose_lib.addIncludePath(.{ .path = "ssl/include" });
 
     var translate_header = b.addTranslateC(.{

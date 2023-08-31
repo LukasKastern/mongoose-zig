@@ -4,6 +4,9 @@
     .version = "0.1.0",
 
     .dependencies = .{
-        
+        .mbedtls = .{
+            .url = "https://github.com/LukasKastern/zig-mbedtls/archive/3547e9b69fb206462a005051be7f1dc65dbc8500.tar.gz",
+            .hash = "1220ebf85705320b22a2f4668334bddf351a9262f433f371296de250e72840e0b968",
+        }
 	},
 }
