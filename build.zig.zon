@@ -3,10 +3,11 @@
     .name = "mongoose-zig",
     .version = "0.1.0",
 
+
     .dependencies = .{
         .mbedtls = .{
-            .url = "https://github.com/LukasKastern/zig-mbedtls/archive/f429356da938fc7c0788126a75cf9f1a8f3b353e.tar.gz",
-            .hash = "12202dd02cffff9b5bd2ba6c8498fbf59fb5ef84d1f92b9d04ddfc3d5e716ba02010",
+            .url = "https://github.com/LukasKastern/zig-mbedtls/archive/c2a97455e0f89713840fb82fa7c152fe73f4b37e.tar.gz",
+            .hash = "1220f67f7b626d235ed453009c0a97b0e6d1274cbcd35ad906c9849f785805f967e2",
         }
 	},
 }
