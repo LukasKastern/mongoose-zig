@@ -50,7 +50,7 @@ pub fn build(b: *std.Build.Builder) void {
         &[_][]const u8{ "-DMG_ENABLE_LINES", "-DMG_ENABLE_MBEDTLS=1" },
     );
 
-    var mbedtls_dep = b.dependency("mbedtls", .{});
+    var mbedtls_dep = b.dependency("mbedtls", .{ .target = target, .optimize = optimize });
     var mbedtls_lib = mbedtls_dep.artifact("mbedtls");
     mongoose_lib.linkLibrary(mbedtls_lib);
 
