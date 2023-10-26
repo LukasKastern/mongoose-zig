@@ -52,6 +52,8 @@ pub fn build(b: *std.Build.Builder) void {
 
     var mbedtls_dep = b.dependency("mbedtls", .{ .target = target, .optimize = optimize });
     var mbedtls_lib = mbedtls_dep.artifact("mbedtls");
+    mbedtls_lib.force_pic = true;
+
     mongoose_lib.linkLibrary(mbedtls_lib);
 
     var translate_header = b.addTranslateC(.{
